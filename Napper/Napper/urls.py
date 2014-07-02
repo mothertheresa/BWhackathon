@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url, include
-from Napper.views import hello
+from Napper.views import homepage
 
 urlpatterns = patterns('',
-    url(r'^hello/$', hello),
+    url(r'^$', homepage),
+    # ...
 )
