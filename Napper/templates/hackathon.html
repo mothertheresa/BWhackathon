@@ -47,7 +47,8 @@
             tooltip.open(map, marker);
           });
         }
-        $.getJSON(urlParam('map')+".json", function(mockdata) {
+        newname = document.getElementById('chooser').value
+        $.getJSON(newname +".json", function(mockdata) {
 	    for(var i = 0; i < mockdata.length; i++)
 	    {
 		var pos = new google.maps.LatLng(mockdata[i].Latitude, mockdata[i].Longitude);
@@ -85,11 +86,11 @@
         </h1> </center>
       </div>
 
-      <select>
+      <select id="chooser" onchange="initialize()">
         <option value="chooseOption">Choose Option</option>
-        <option value="tRob">TRob</option>
-        <option value="ChrisB">ChrisB</option>
-        <option value="Ludacris">Ludacris</option>
+        <option value="tRob" >TRob</option>
+        <option value="chrisb">ChrisB</option>
+        <option value="ludacris">Ludacris</option>
       </select>
       <!-- <p> This is text. </p> -->
       <div id="map-canvas">
