@@ -28,8 +28,8 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-  var mockdata = [["Theresa","this is text",42,-85],["Deric","whoo",41,-73]];
-
+  var mockdata = [["Theresa","this is text",42,-75],["Deric","test blah ",41,-73]];
+/*
   var markers = [];
 
   for (var i = 0; i < mockdata.length; i++) {
@@ -59,25 +59,35 @@ function initialize() {
 	infowindow.setContent(contentString);
 	infowindow.open(map, this);
 	});
-	}
+}*/
 
+
+        markers = [];
+	tooltips = [];
+
+
+        function listenMarker (marker)
+{
+    // so marker is associated with the closure created for the listenMarker function call
+    google.maps.event.addListener(marker, 'click', function() {
+                        tooltip.open(map, marker);
+                    });
+}
 
                     for(var i = 0; i < mockdata.length; i++)
                     {
-                        var pos = new google.maps.LatLng(json.earthquakes[i].lat, json.earthquakes[i].lng);
-                        var info = json.earthquakes[i].lat + ", " + json.earthquakes[i].lng;
+                        var pos = new google.maps.LatLng(mockdata[i][2], mockdata[i][3]);
                         var marker = new google.maps.Marker({
                             map: map, 
                             position: pos,
-                            title: json.earthquakes[i].eqid
+                            title: mockdata[i][0]
                         })
                         var tooltip = new google.maps.InfoWindow({
-                            content: info
+                            content: "<h1>"+mockdata[i][0]+'</h1>'+mockdata[i][1]
                         })
-                        google.maps.event.addListener(marker, 'click', function() {
-                            tooltip.open(map, marker);
-                        });
-                        markers.push(marker);
+			tooltip.open(map,marker);
+                        listenMarker(marker);
+			markers.push(marker);
                         tooltips.push(tooltip);
                     }               
 
