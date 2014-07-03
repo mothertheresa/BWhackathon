@@ -29,6 +29,16 @@
         val = w.location.search.match(rx);
         return !val ? '':val[1];
       }
+      function gotoURL() {
+	//window.alert("sometext");
+	//window.location.replace("http://www.google.com");
+	var url = window.location.href;
+	var newurl = url.substring(0,url.lastIndexOf("=")+1);
+
+		//+'hackathon.html?map='
+		//+document.getElementByID('chooser'.value);
+	window.location.replace(newurl+''+document.getElementById('chooser').value);
+      }
       function initialize() {
         var myLatlng = new google.maps.LatLng(42,-80); // center of the map
         var mapOptions = {
@@ -48,7 +58,7 @@
           });
         }
         newname = document.getElementById('chooser').value
-        $.getJSON(newname +".json", function(mockdata) {
+        $.getJSON(urlParam("map")+".json", function(mockdata) {
 	    for(var i = 0; i < mockdata.length; i++)
 	    {
 		var pos = new google.maps.LatLng(mockdata[i].Latitude, mockdata[i].Longitude);
@@ -71,7 +81,7 @@
 		tooltips.push(tooltip);
 	   }
 	});          
-	map.fitBounds(bounds);     
+	map.fitBounds(bounds);    
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -86,11 +96,12 @@
         </h1> </center>
       </div>
 
-      <select id="chooser" onchange="initialize()">
+      <select id="chooser" onchange="gotoURL()">
         <option value="chooseOption">Choose Option</option>
-        <option value="tRob" >TRob</option>
-        <option value="chrisb">ChrisB</option>
-        <option value="ludacris">Ludacris</option>
+        <option value="jsmith">jsmith</option>
+        <option value="trob">trob</option>
+        <option value="chrisb">chrisb</option>
+        <option value="ludacris">ludacris</option>
       </select>
       <!-- <p> This is text. </p> -->
       <div id="map-canvas">
