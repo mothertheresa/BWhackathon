@@ -33,6 +33,7 @@
             tooltip.open(map, marker);
           });
         }
+<<<<<<< HEAD
         $.getJSON('mockdata.json', function(mockdata) {
          for(var i = 0; i < mockdata.length; i++)
          {
@@ -51,6 +52,30 @@
           tooltips.push(tooltip);
         }
       });               
+=======
+        $.getJSON('chrisnpitbull.json', function(mockdata) {
+	    for(var i = 0; i < mockdata.length; i++)
+	    {
+		var pos = new google.maps.LatLng(mockdata[i].Latitude, mockdata[i].Longitude);
+		var marker = new google.maps.Marker({
+		    map: map, 
+		    position: pos,
+		    icon: {
+     		      path: google.maps.SymbolPath.CIRCLE,
+      		      scale: 5
+    		    },
+		    title: mockdata[i].Event
+		})
+		var tooltip = new google.maps.InfoWindow({
+		    content: "<div style='width:100px'><h3>"+mockdata[i].Event+"</h3>"+mockdata[i].Note+"</div>"
+		})
+		tooltip.open(map,marker);
+		listenMarker(marker);
+		markers.push(marker);
+		tooltips.push(tooltip);
+	   }
+	});               
+>>>>>>> d3cd57efefb090b723f071e44ce8a7ff7ea9a9d4
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 
