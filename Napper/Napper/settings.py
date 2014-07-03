@@ -13,7 +13,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = (
-    '/Users/dcheng/cos/BWHackathon/Napper/templates',
+#    '/Users/dcheng/cos/BWHackathon/Napper/templates',
+     'C:\Users\Theresa\Documents\GitHub\BWhackathon\Napper\templates',
 )
 
 # Quick-start development settings - unsuitable for production
