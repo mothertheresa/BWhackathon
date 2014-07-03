@@ -37,6 +37,10 @@
 		var marker = new google.maps.Marker({
 		    map: map, 
 		    position: pos,
+		    icon: {
+     		      path: google.maps.SymbolPath.CIRCLE,
+      		      scale: 5
+    		    },
 		    title: mockdata[i][3]
 		})
 		var tooltip = new google.maps.InfoWindow({
