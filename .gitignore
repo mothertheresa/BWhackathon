@@ -1,4 +1,8 @@
 *.pyc
+<<<<<<< HEAD
+*.pyc
+=======
 /Napper/Napper/__init__.pyc
 /Napper/Napper/settings.pyc
 /Napper/Napper/wsgi.pyc
+>>>>>>> 603f3d56908d180d37b25e9ca18a4bd091b24707
