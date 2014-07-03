@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <style type="text/css">
@@ -140,6 +141,58 @@ tooltips = [];
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+=======
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVoQWoo26DazA9M-0MwkMk1GNQ_Jjfh8">
+    </script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+      var infowindow = null;
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(42,-80); // center of the map
+        var mapOptions = {
+          zoom: 4,
+          center: myLatlng
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        infowindow = new google.maps.InfoWindow({
+	  content: "holding..."
+	});
+        markers = [];
+	tooltips = [];
+        function listenMarker (marker) {
+          google.maps.event.addListener(marker, 'click', function() {
+            tooltip.open(map, marker);
+          });
+        }
+        $.getJSON('mockdata.json', function(mockdata) {
+	    for(var i = 0; i < mockdata.length; i++)
+	    {
+		var pos = new google.maps.LatLng(mockdata[i][1], mockdata[i][2]);
+		var marker = new google.maps.Marker({
+		    map: map, 
+		    position: pos,
+		    title: mockdata[i][3]
+		})
+		var tooltip = new google.maps.InfoWindow({
+		    content: "<div style='width:100px'><h3>"+mockdata[i][3]+"</h3>"+mockdata[i][4]+"</div>"
+		})
+		tooltip.open(map,marker);
+		listenMarker(marker);
+		markers.push(marker);
+		tooltips.push(tooltip);
+	   }
+	});               
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+>>>>>>> 890d639e6d316fe97270d41a3d626cea6dc80247
 
   </script>
   <link rel="stylesheet" type="text/css" href="hackathon.css">
