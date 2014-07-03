@@ -71,6 +71,15 @@
     		    },
 		    title: mockdata[i].Event
 		});
+	        if (urlParam("map") == "ludacris") {
+		  marker.setIcon('dollar.png');
+	        }
+		if (urlParam("map") == "trob") {
+		  marker.setIcon('trob.jpg');
+		}
+		if (urlParam("map") == "chrisb") {
+		  marker.setIcon('hoes.png');
+		}		
 		bounds.extend(marker.position);
 		var tooltip = new google.maps.InfoWindow({
 		    content: "<div style='width:100px'><h3>"+mockdata[i].Event+"</h3>"+mockdata[i].Note+"</div>"
