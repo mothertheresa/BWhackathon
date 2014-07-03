@@ -31,10 +31,10 @@
             tooltip.open(map, marker);
           });
         }
-        $.getJSON('mockdata.json', function(mockdata) {
+        $.getJSON('chrisnpitbull.json', function(mockdata) {
 	    for(var i = 0; i < mockdata.length; i++)
 	    {
-		var pos = new google.maps.LatLng(mockdata[i][1], mockdata[i][2]);
+		var pos = new google.maps.LatLng(mockdata[i].Latitude, mockdata[i].Longitude);
 		var marker = new google.maps.Marker({
 		    map: map, 
 		    position: pos,
@@ -42,10 +42,10 @@
      		      path: google.maps.SymbolPath.CIRCLE,
       		      scale: 5
     		    },
-		    title: mockdata[i][3]
+		    title: mockdata[i].Event
 		})
 		var tooltip = new google.maps.InfoWindow({
-		    content: "<div style='width:100px'><h3>"+mockdata[i][3]+"</h3>"+mockdata[i][4]+"</div>"
+		    content: "<div style='width:100px'><h3>"+mockdata[i].Event+"</h3>"+mockdata[i].Note+"</div>"
 		})
 		tooltip.open(map,marker);
 		listenMarker(marker);
