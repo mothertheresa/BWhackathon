@@ -1,1 +1,4 @@
 *.pyc
+/Napper/Napper/__init__.pyc
+/Napper/Napper/settings.pyc
+/Napper/Napper/wsgi.pyc
